@@ -3,7 +3,7 @@ persist.vendor.audio.fluence.voicecomm=true
 persist.vendor.audio.voicecall.speaker.stereo=false
 
 # Camera
-persist.vendor.camera.physical.num=3
+persist.vendor.camera.physical.num=5
 
 # Display
 debug.sf.frame_rate_multiple_threshold=120
