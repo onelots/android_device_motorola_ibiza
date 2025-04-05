@@ -25,6 +25,7 @@ $(call inherit-product, device/motorola/sm6375-common/common.mk)
 PRODUCT_PACKAGES += \
     FrameworksResDevice \
     LineageApertureAppDevice \
+    LineagePlatformDevice \
     SystemUIResDevice \
     WifiResDevice
 
