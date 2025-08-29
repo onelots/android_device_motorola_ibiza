@@ -16,7 +16,7 @@ PRODUCT_AAPT_PREF_CONFIG := 280dpi
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
 
 # Shipping API level
-PRODUCT_SHIPPING_API_LEVEL := 34
+PRODUCT_SHIPPING_API_LEVEL := 30
 
 # Inherit from motorola sm6375-common
 $(call inherit-product, device/motorola/sm6375-common/common.mk)
@@ -87,4 +87,4 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
 # Inherit from vendor blobs
-$(call inherit-product, vendor/motorola/fogo/fogo-vendor.mk)
+$(call inherit-product, vendor/motorola/ibiza/ibiza-vendor.mk)
