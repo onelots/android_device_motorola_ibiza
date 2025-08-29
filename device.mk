@@ -4,11 +4,11 @@
 #
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 2400
-TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 1600
+TARGET_SCREEN_WIDTH := 720
 
 # Screen
-TARGET_SCREEN_DENSITY := 420
+TARGET_SCREEN_DENSITY := 280
 
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
@@ -75,4 +75,4 @@ PRODUCT_PACKAGES += \
     StylusKeyHandler
 
 # Inherit from vendor blobs
-$(call inherit-product, vendor/motorola/denver/denver-vendor.mk)
+$(call inherit-product, vendor/motorola/ibiza/ibiza-vendor.mk)

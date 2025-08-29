@@ -44,7 +44,7 @@ extract_fns: extract_fns_user_type = {
 }
 
 module = ExtractUtilsModule(
-    'denver',
+    'ibiza',
     'motorola',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
