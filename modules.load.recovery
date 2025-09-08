@@ -1,7 +1,8 @@
 mmi_info.ko
 mmi_annotate.ko
 sensors_class.ko
-exfat.ko
+qpnp_adaptive_charge.ko
+mmi_sys_temp.ko
+nova_0flash_mmi.ko
 mmi-smbcharger-iio.ko
-ilitek_v3_mmi.ko
 nova_0flash_mmi.ko
