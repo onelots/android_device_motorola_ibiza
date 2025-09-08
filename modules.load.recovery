@@ -6,4 +6,5 @@ sensors_class.ko
 qpnp_adaptive_charge.ko
 ilitek_v3_mmi.ko
 mmi_sys_temp.ko
+nova_0flash_mmi.ko
 mmi-smbcharger-iio.ko
