@@ -23,4 +23,4 @@ vendor.false_touch_quality=38
 persist.vendor.nfc.config_file_name=libnfc-SN220-UICC.conf
 
 # Radio
-ro.vendor.radio.imei.sv=1
+ro.vendor.radio.imei.sv=31
