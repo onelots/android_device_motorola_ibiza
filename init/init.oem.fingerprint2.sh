@@ -27,11 +27,10 @@ GKI_PATH=$(getprop $PROP_GKI_PATH)
 # hal_list: the array contains the hal service name.
 #
 # note: all arrays should have the same size.
-vendor_list=('goodix' 'fpc')
-kernel_so_list=("/vendor/lib/modules/$GKI_PATH/goodix_fod_mmi.ko" "/vendor/lib/modules/$GKI_PATH/fpc1020_mmi.ko")
-kernel_so_name_list=("goodix_fod_mmi.ko" "fpc1020_mmi.ko")
-dev_node_list=("/dev/goodix_fp" "/sys/class/fingerprint/fpc1020/irq")
-hal_list=('goodix_hal' 'fps_hal')
+vendor_list=('fpc' 'chipone')
+kernel_so_list=("/vendor/lib/modules/$GKI_PATH/fpc1020_mmi.ko" "/vendor/lib/modules/$GKI_PATH/fpsensor_spi_tee.ko")
+kernel_so_name_list=("fpc1020_mmi.ko" "fpsensor_spi_tee.ko")
+hal_list=('fps_hal' 'chipone_fp_hal')
 last_vendor_index=`expr ${#vendor_list[@]} - 1`
 vendor_list_size=${#vendor_list[@]}
 
@@ -94,19 +93,6 @@ function start_hal_service(){
     log "${kernel_so_list[$1]} insmod"
     sleep 1
     setprop $prop_fps_ident ${vendor_list[$1]}
-
-    retry=1
-    while [ $retry -lt 5 ]
-    do
-        if [ -e  "${dev_node_list[$1]}" ]; then
-            log "dev node : ${dev_node_list[$1]} is ready"
-            break
-        else
-            log "driver is not ready, $retry times wait 1s to retry"
-            sleep 1
-        fi
-        let retry++
-    done
 
     log "start ${hal_list[$1]}"
     start ${hal_list[$1]}
