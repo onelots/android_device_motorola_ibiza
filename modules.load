@@ -51,3 +51,4 @@ chipone_tddi_mmi.ko
 sx937x_sar.ko
 mmi_sys_temp.ko
 mmi-smbcharger-iio.ko
+utags.ko
