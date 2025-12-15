@@ -25,6 +25,8 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+blocklist fpc1020_mmi
+blocklist fpsensor_spi_tee
 blocklist 8250_of
 blocklist dummy_hcd
 blocklist llcc_perfmon
