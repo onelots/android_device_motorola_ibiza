@@ -251,22 +251,8 @@
         <item>0:2:15</item> <!-- ID0:Fingerprint:Strong -->
     </string-array>
 
-    <!-- An array of arrays of side fingerprint sensor properties relative to each display.
-         Note: this value is temporary and is expected to be queried directly
-         from the HAL in the future. -->
-    <array name="config_sfps_sensor_props" translatable="false">
-        <item>@array/config_sfps_sensor_props_0</item>
-    </array>
-
-    <array name="config_sfps_sensor_props_0" translatable="false">
-        <item>local:4630946747577212033</item> <!--item>displayId</item-->
-        <item>720</item> <!--item>sensorLocationX</item-->
-        <item>585</item> <!--item>sensorLocationY</item-->
-        <item>200</item> <!--item>sensorRadius</item-->
-    </array>
-
     <!-- Indicates whether device has a power button fingerprint sensor. -->
-    <bool name="config_is_powerbutton_fps" translatable="false">true</bool>
+    <bool name="config_is_powerbutton_fps" translatable="false">false</bool>
 
     <!-- The default refresh rate for a given device. Change this value to set a higher default
          refresh rate. If the hardware composer on the device supports display modes with a higher
@@ -282,7 +268,7 @@
          the framework from using higher refresh rates, even if display modes with higher refresh
          rates are available from hardware composer. Only has an effect if the value is
          non-zero. -->
-    <integer name="config_defaultPeakRefreshRate">120</integer>
+    <integer name="config_defaultPeakRefreshRate">90</integer>
 
     <!-- Default refresh rate in the zone defined by brightness and ambient thresholds.
          If non-positive, then the refresh rate is unchanged even if thresholds are configured. -->
