@@ -19,10 +19,5 @@
         a 30,30 0 1 0 -60,0
         Z
     </string>
-
-    <!-- ID for the camera of outer display that needs extra protection -->
-    <string name="config_protectedCameraId" translatable="false">1</string>
-
-    <!--  Flag to turn on the rendering of the above path or not  -->
-    <bool name="config_enableDisplayCutoutProtection">true</bool>
+    
 </resources>
