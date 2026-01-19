@@ -3680,7 +3680,9 @@
     </path>
 
     <path name="voice-rec-mic">
-        <path name="handset-mic" />
+        <path name="speaker-mic" />
+        <ctl name="TX_DEC2 Volume" value="84" />
+        <ctl name="ADC2 Volume" value="15" />
     </path>
 
     <path name="camcorder-mic">
