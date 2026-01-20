@@ -1,0 +1,10 @@
+on boot && property:ro.vendor.hw.nfc=nxp
+    start vendor.nfc_hal_service
+
+service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc-service.nxp
+    class early_hal
+    user nfc
+    group nfc drmrpc system
+    disabled
+    # Motorola, wangjiao, 06/02/2021, IKSWR-85914, add shutdown critical
+    shutdown critical
