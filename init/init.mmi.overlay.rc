@@ -1,7 +1,3 @@
-on post-fs
-    chown system system /sys/devices/platform/soc/4804000.ufshc/clkgate_enable
-    chown system system /sys/devices/platform/soc/4804000.ufshc/devfreq/4804000.ufshc/min_freq
-    
 #fps dual sensor
 service chipone_ident /vendor/bin/hw/chipone_ident
     class late_start
@@ -10,38 +6,17 @@ service chipone_ident /vendor/bin/hw/chipone_ident
     oneshot
     disabled
 
+service vendor.ident-fps-overlay-sh /vendor/bin/init.oem.fingerprint.overlay.sh
+    class core
+    user root
+    group drmrpc system
+    oneshot
+    disabled
+
 on post-fs-data
-    # touch api
-    chown system system /sys/class/touchscreen/primary/interpolation
-    chmod 0660 /sys/class/touchscreen/primary/interpolation
-    chown system system /sys/class/touchscreen/primary/first_filter
-    chmod 0660 /sys/class/touchscreen/primary/first_filter
-    chown system system /sys/class/touchscreen/primary/edge
-    chmod 0660 /sys/class/touchscreen/primary/edge
-
-    #bluetooth sar
-    write /data/vendor/radio/bluetooth_sar disable
-    chmod 0644 /data/vendor/radio/bluetooth_sar
-    chown radio /data/vendor/radio/bluetooth_sar
-
-on early-init
-    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/nova_0flash_mmi.ko
-
-on boot
-    # vibrator hal need to access this sysfs node for AF noise issue
-    chown system system /sys/devices/platform/soc/soc:mot,cam-actuator/onekey_actuator
-    chmod 0660 /sys/devices/platform/soc/soc:mot,cam-actuator/onekey_actuator
-    # touch
-    chown system system /sys/class/touchscreen/primary/interpolation
-    chmod 0660 /sys/class/touchscreen/primary/interpolation
-    chown system system /sys/class/touchscreen/primary/sample
-    chmod 0660 /sys/class/touchscreen/primary/sample
-    chown system system /sys/class/touchscreen/primary/edge
-    chmod 0660 /sys/class/touchscreen/primary/edge
-    chown system system /sys/class/touchscreen/primary/gesture
-    chmod 0660 /sys/class/touchscreen/primary/gesture
-    chmod 0660 /sys/class/capsense/mode
-    chmod 0666 /dev/gtp_tools
+    exec_start vendor.ident-fps-overlay-sh
+    chown system system /dev/fpsensor
+    chmod 0660 /dev/fpsensor
 
 on boot && property:ro.vendor.mot.gki.path=5.4-gki
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -r -d /vendor/lib/modules/${ro.vendor.mot.gki.path} nova_0flash_mmi chipone_tddi_mmi
@@ -56,30 +31,3 @@ on late-init
 on charger
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/mmi-smbcharger-iio.ko
     insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/qpnp_adaptive_charge.ko
-
-on property:vendor.bluetooth.sar_state=connect
-    write /data/vendor/radio/bluetooth_sar connect
-
-on property:vendor.bluetooth.sar_state=disconnect
-    write /data/vendor/radio/bluetooth_sar disconnect
-
-on property:sys.boot_completed=1
-    chown system system /sys/class/touchscreen/primary/stowed
-    chmod 0660 /sys/class/touchscreen/primary/stowed
-
-on init
-    insmod /vendor/lib/modules/${ro.vendor.mot.gki.path}/nova_0flash_mmi.ko
-
-on property:dev.bootcomplete=1 && property:ro.vendor.hw.ram=4GB
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/dm-1/queue/read_ahead_kb 128
-    write /sys/block/dm-2/queue/read_ahead_kb 128
-    write /sys/block/dm-3/queue/read_ahead_kb 128
-    write /sys/block/dm-4/queue/read_ahead_kb 128
-    write /sys/block/dm-5/queue/read_ahead_kb 128
-    write /sys/block/${dev.mnt.dev.root}/queue/read_ahead_kb 128
-    write /sys/block/${dev.mnt.dev.system_ext}/queue/read_ahead_kb 128
-    write /sys/block/${dev.mnt.dev.product}/queue/read_ahead_kb 128
-    write /sys/block/${dev.mnt.dev.vendor}/queue/read_ahead_kb 128
-    write /sys/block/${dev.mnt.dev.data}/queue/read_ahead_kb 128
-    write /sys/block/${dev.mnt.rootdisk.data}/queue/read_ahead_kb 128
