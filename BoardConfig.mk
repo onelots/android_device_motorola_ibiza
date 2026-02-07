@@ -24,6 +24,7 @@ ODM_MANIFEST_N_FILES := $(DEVICE_PATH)/sku/manifest_n.xml
 
 # Kernel
 BOARD_KERNEL_CMDLINE += androidboot.hab.product=ibiza
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 TARGET_KERNEL_CONFIG += vendor/ext_config/moto-holi-ibiza.config
 
 # Kernel Modules
