@@ -25,7 +25,6 @@ $(call inherit-product, device/motorola/sm6375-common/common.mk)
 PRODUCT_PACKAGES += \
     FrameworksResDevice \
     LineageApertureAppDevice \
-    LineagePlatformDevice \
     SystemUIResDevice \
     WifiResDevice
 
@@ -69,10 +68,6 @@ PRODUCT_COPY_FILES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
-
-# StylusKeyHandler
-PRODUCT_PACKAGES += \
-    StylusKeyHandler
 
 # Inherit from vendor blobs
 $(call inherit-product, vendor/motorola/ibiza/ibiza-vendor.mk)
